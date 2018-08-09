@@ -27,6 +27,7 @@ public class BillService {
         if (sflag == 1 && wflag == 1 && eflag == 1 && sflag == 1){
             return 1;
         }
+
         return  0;
 
     }
