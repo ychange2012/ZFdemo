@@ -1,0 +1,291 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<STYLE  type="text/css" media="print">
+     TR,TD{  font-family : Verdana;  font-size : 10pt;  color : Black;}
+	 #noborder2{border:0;} 
+	 #topborder{border-left:none;border-right:none; border-bottom:none;}
+	 #topborder2{border-left:none;border-right:none; border-top:none;}
+	 leftindent2{margin-left:2em;}
+	 leftindent5{margin-left:5em;}
+	</STYLE>  
+	<style type="text/css" media="print">
+   @page
+   {
+       size: auto;   /* auto is the initial value */
+       margin: 0mm 10mm 0mm 10mm;  /* this affects the margin in the printer settings 最关键的还是这个*/
+   }
+   body
+   {
+       background-color:#FFFFFF;
+       margin: 0mm;  /* this affects the margin on the content before sending to printer */
+   }
+</style>
+	
+	<script language="javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script language="javascript" src="js/jquery.jqprint-0.3.js"></script>
+	<script src="js/jquery-migrate-1.2.1.min.js"></script>
+	<script src="js/handlebars.min.js"></script>
+	<script language="javascript">
+	function  a(){
+			$("#ddd").jqprint();
+		}
+    $(document).ready(function (){
+	var roomids=UrlParm.parm("ids");
+	//alert(roomids);
+    $.ajax({
+               type: "POST",
+               url: "http://192.168.200.89:8080/bill/getprint",
+               data: "ids="+roomids,
+               success: function(data){
+					//用jQuery获取模板
+					var tpl   =  $("#myTemplate").html();
+					//预编译模板
+					var template = Handlebars.compile(tpl);
+					for( var i=1;i<=data.length;i++){
+						data[i-1].dz = changeMoneyToChinese(data[i-1].total);
+						//匹配json内容
+						var html = template(data[i-1]);
+						$('#paper').append(html);
+						//$('#paper').append(html);
+						if(i%4==0){
+							$('#paper').append('<div style="page-break-after:always"></div>');
+							//alert(i%4);
+						}
+					}
+               },
+			   error:function(data){
+			   
+			   }
+            });
+
+	});
+    </script>
+</head>
+<body>
+<input type="button" style="width:100%;high:20px;" onclick=" a()" value="打印"/>
+<div id="ddd">
+	<div style="width:649px;high:100px; border:0px solid #000000;margin: 0 auto;background-color:#FFFFFF;" id="paper" >
+		  
+		
+		
+	</div>  
+</div>
+
+
+</body>
+</html>
+
+<script type="text/template" id="myTemplate">
+    <div class="demo">
+        <br>
+		 	  <table width="100%" border="1" style="BORDER-COLLAPSE: collapse ;" bordercolorlight="#000000" bordercolordark="#000000" id="noborder">
+			   <tr >
+				  <td align="center" colspan="8" style="font-size:22px;" id="topborder" ><strong>收款收据单</strong></td>
+			   </tr>
+			   <tr>
+				  <td align="left" colspan="2" id="topborder2">租客：{{room_name}}</td>
+				  <td align="left" colspan="3" id="topborder2">房间：{{room_desc}}</td>
+				  <td align="right" colspan="3" id="topborder2">No:{{nowStr}}{{no}}</td>
+			   </tr>
+			  <tr>
+				  <td align="center" width="80">费用项目</td>
+				  <td align="center" width="140">开始时间</td>
+				  <td align="center" width="140">结束时间</td>
+				  <td align="center" width="45">起数</td>
+				  <td align="center" width="45">止数</td>
+				  <td align="center" width="45">用量</td>
+				  <td align="center" width="70">单价</td>
+				  <td align="center" width="85">金额</td>
+				  </tr>
+				  <tr>
+				  <td align="center">租金</td>
+				  <td align="center">{{rbdate}}</td>
+				  <td align="center">{{redate}}</td>
+				  <td align="center">-</td>
+				  <td align="center">-</td>
+				  <td align="center">-</td>
+				  <td align="right">{{rprice}}</td>
+				  <td align="right">{{rprice}}</td>
+				  </tr>
+				  <tr>
+				  <td align="center">电费</td>
+				  <td align="center">{{ebdate}}</td>
+				  <td align="center">{{eedate}}</td>
+				  <td align="right">{{ebqty}}</td>
+				  <td align="right">{{eeqty}}</td>
+				  <td align="right">{{eqty}}</td>
+				  <td align="right">{{eprice}}</td>
+				  <td align="right">{{etotal}}</td>
+				  </tr>
+				  <tr>
+				  <td align="center">水费</td>
+				  <td align="center">{{wbdate}}</td>
+				  <td align="center">{{wedate}}</td>
+				  <td align="right">{{wbqty}}</td>
+				  <td align="right">{{weqty}}</td>
+				  <td align="right">{{wqty}}</td>
+				  <td align="right">{{wprice}}</td>
+				  <td align="right">{{wtotal}}</td>
+				  </tr>
+				  <tr>
+				  <td align="center">公用电</td>
+				  <td align="center">{{sbdate}}</td>
+				  <td align="center">{{sedate}}</td>
+				  <td align="center">-</td>
+				  <td align="center">-</td>
+				  <td align="center">-</td>
+				  <td align="right">{{sprice}}</td>
+				  <td align="right">{{sprice}}</td>
+				  </tr>
+				  <tr> 
+				   <td colspan="1" align="center" >应收合计</td>
+				  <td colspan="7" align="center" >{{total}}（{{dz}}）</td>
+				  </tr>
+				  <tr>
+				  <td align="left" colspan="2" id="topborder2">打印日期：{{nowStr}}</td>
+				  <td align="left" colspan="3" id="topborder2">经办人：</td>
+				  <td align="left" colspan="3" id="topborder2">付款人：</td>
+			  </tr>
+		  </table>
+		 <br>
+    </div>
+</script>
+
+<script language="javascript">
+	function changeMoneyToChinese(money){
+		    var cnNums = new Array("零","壹","贰","叁","肆","伍","陆","柒","捌","玖"); //汉字的数字
+		    var cnIntRadice = new Array("","拾","佰","仟"); //基本单位
+		    var cnIntUnits = new Array("","万","亿","兆"); //对应整数部分扩展单位
+		    var cnDecUnits = new Array("角","分","毫","厘"); //对应小数部分单位
+		    //var cnInteger = "整"; //整数金额时后面跟的字符
+		    var cnIntLast = "元"; //整型完以后的单位
+		    var maxNum = 999999999999999.9999; //最大处理的数字
+		    
+		    var IntegerNum; //金额整数部分
+		    var DecimalNum; //金额小数部分
+		    var ChineseStr=""; //输出的中文金额字符串
+		    var parts; //分离金额后用的数组，预定义
+		    if( money == "" ){
+		        return "";
+		    }
+		    money = parseFloat(money);
+		    if( money >= maxNum ){
+		        $.alert('超出最大处理数字');
+		        return "";
+		    }
+		    if( money == 0 ){
+		        //ChineseStr = cnNums[0]+cnIntLast+cnInteger;
+		        ChineseStr = cnNums[0]+cnIntLast
+		        //document.getElementById("show").value=ChineseStr;
+		        return ChineseStr;
+		    }
+		    money = money.toString(); //转换为字符串
+		    if( money.indexOf(".") == -1 ){
+		        IntegerNum = money;
+		        DecimalNum = '';
+		    }else{
+		        parts = money.split(".");
+		        IntegerNum = parts[0];
+		        DecimalNum = parts[1].substr(0,4);
+		    }
+		    if( parseInt(IntegerNum,10) > 0 ){//获取整型部分转换
+		        zeroCount = 0;
+		        IntLen = IntegerNum.length;
+		        for( i=0;i<IntLen;i++ ){
+		            n = IntegerNum.substr(i,1);
+		            p = IntLen - i - 1;
+		            q = p / 4;
+		            m = p % 4;
+		            if( n == "0" ){
+		                zeroCount++;
+		            }else{
+		                if( zeroCount > 0 ){
+		                    ChineseStr += cnNums[0];
+		                }
+		                zeroCount = 0; //归零
+		                ChineseStr += cnNums[parseInt(n)]+cnIntRadice[m];
+		            }
+		            if( m==0 && zeroCount<4 ){
+		                ChineseStr += cnIntUnits[q];
+		            }
+		        }
+		        ChineseStr += cnIntLast;
+		        //整型部分处理完毕
+		    }
+		    if( DecimalNum!= '' ){//小数部分
+		        decLen = DecimalNum.length;
+		        for( i=0; i<decLen; i++ ){
+		            n = DecimalNum.substr(i,1);
+		            if( n != '0' ){
+		                ChineseStr += cnNums[Number(n)]+cnDecUnits[i];
+		            }
+		        }
+		    }
+		    if( ChineseStr == '' ){
+		        //ChineseStr += cnNums[0]+cnIntLast+cnInteger;
+		        ChineseStr += cnNums[0]+cnIntLast;
+		    }/* else if( DecimalNum == '' ){
+		        ChineseStr += cnInteger;
+		        ChineseStr += cnInteger;
+		    } */
+		    return ChineseStr;
+		}
+
+</script>
+<script language="javascript">
+UrlParm = function() { // url参数
+ var data, index;
+ (function init() {
+  data = [];
+  index = {};
+  var u = window.location.search.substr(1);
+  if (u != '') {
+   var parms = decodeURIComponent(u).split('&');
+   for (var i = 0, len = parms.length; i < len; i++) {
+    if (parms[i] != '') {
+     var p = parms[i].split("=");
+     if (p.length == 1 || (p.length == 2 && p[1] == '')) {// p | p=
+      data.push(['']);
+      index[p[0]] = data.length - 1;
+     } else if (typeof(p[0]) == 'undefined' || p[0] == '') { // =c | =
+      data[0] = [p[1]];
+     } else if (typeof(index[p[0]]) == 'undefined') { // c=aaa
+      data.push([p[1]]);
+      index[p[0]] = data.length - 1;
+     } else {// c=aaa
+      data[index[p[0]]].push(p[1]);
+     }
+    }
+   }
+  }
+ })();
+ return {
+  // 获得参数,类似request.getParameter()
+  parm : function(o) { // o: 参数名或者参数次序
+   try {
+    return (typeof(o) == 'number' ? data[o][0] : data[index[o]][0]);
+   } catch (e) {
+   }
+  },
+  //获得参数组, 类似request.getParameterValues()
+  parmValues : function(o) { // o: 参数名或者参数次序
+   try {
+    return (typeof(o) == 'number' ? data[o] : data[index[o]]);
+   } catch (e) {}
+  },
+  //是否含有parmName参数
+  hasParm : function(parmName) {
+   return typeof(parmName) == 'string' ? typeof(index[parmName]) != 'undefined' : false;
+  },
+  // 获得参数Map ,类似request.getParameterMap()
+  parmMap : function() {
+   var map = {};
+   try {
+    for (var p in index) { map[p] = data[index[p]]; }
+   } catch (e) {}
+   return map;
+  }
+ }
+}();
+</script>

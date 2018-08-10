@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<STYLE  type="text/css" media="print">
+     TR,TD{  font-family : Verdana;  font-size : 10pt;  color : Black;}
+	 #noborder2{border:0;} 
+	 #topborder{border-left:none;border-right:none; border-bottom:none;}
+	 #topborder2{border-left:none;border-right:none; border-top:none;}
+	 leftindent2{margin-left:2em;}
+	 leftindent5{margin-left:5em;}
+	</STYLE>  
+	
+	<script language="javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script language="javascript" src="js/jquery.jqprint-0.3.js"></script>
+	<script src="js/jquery-migrate-1.2.1.min.js"></script>
+	<script language="javascript">
+	function  a(){
+			$("#ddd").jqprint();
+		}
+    $(document).ready(function (){
+
+    $.ajax({
+               type: "POST",
+               url: "http://192.168.200.89:8080/bill/getprint",
+               data: "ids=1",
+               success: function(data){
+                    alert(data[0].room_id);
+               },
+			   error:function(data){
+			   
+			   }
+            });
+
+	});
+    </script>
+</head>
+<body>
+<input type="button" onclick=" a()" value="打印"/>
+<div style="background-color:#E0E0E0;" id="ddd">
+	<div style="width:649px;height:960px;border:0px solid #000000;margin: 0 auto;background-color:#FFFFFF;"  >
+	  <div style="margin-left:5px;margin-right:5px;"> 
+		  <table width="100%" border="1" style="BORDER-COLLAPSE: collapse ;" bordercolorlight="#000000" bordercolordark="#000000" id="noborder">
+		   <tr >
+			  <td align="center" colspan="8" style="font-size:22px;" id="topborder" ><strong>收款收据单</strong></td>
+		   </tr>
+		   <tr>
+			  <td align="left" colspan="2" id="topborder2">租客：102</td>
+			  <td align="left" colspan="3" id="topborder2">房间：五巷二号-102</td>
+			  <td align="right" colspan="3" id="topborder2">No:20180730157764</td>
+		   </tr>
+		  <tr>
+			  <td align="center" width="80">费用项目</td>
+			  <td align="center" width="140">开始时间</td>
+			  <td align="center" width="140">结束时间</td>
+			  <td align="center" width="45">起数</td>
+			  <td align="center" width="45">止数</td>
+			  <td align="center" width="45">用量</td>
+			  <td align="center" width="70">单价</td>
+			  <td align="center" width="85">金额</td>
+			  </tr>
+			  <tr>
+			  <td align="center">租金</td>
+			  <td align="center">2018-08-01</td>
+			  <td align="center">2018-08-31</td>
+			  <td align="center">-</td>
+			  <td align="center">-</td>
+			  <td align="center">-</td>
+			  <td align="right">1200.00</td>
+			  <td align="right">1200.00</td>
+			  </tr>
+			  <tr>
+			  <td align="center">电费</td>
+			  <td align="center">2018-08-01</td>
+			  <td align="center">2018-08-31</td>
+			  <td align="right"></td>
+			  <td align="right"></td>
+			  <td align="right"></td>
+			  <td align="right"></td>
+			  <td align="right"></td>
+			  </tr>
+			  <tr>
+			  <td align="center">水费</td>
+			  <td align="center">2018-08-01</td>
+			  <td align="center">2018-08-31</td>
+			  <td align="right"></td>
+			  <td align="right"></td>
+			  <td align="right"></td>
+			  <td align="right"></td>
+			  <td align="right"></td>
+			  </tr>
+			  <tr>
+			  <td align="center">公用电</td>
+			  <td align="center">2018-08-01</td>
+			  <td align="center">2018-08-31</td>
+			  <td align="center">-</td>
+			  <td align="center">-</td>
+			  <td align="center">-</td>
+			  <td align="center"></td>
+			  <td align="center"></td>
+			  </tr>
+			  <tr>
+			  <td align="center">空调费</td>
+			  <td align="center">2018-08-01</td>
+			  <td align="center">2018-08-31</td>
+			  <td align="center">-</td>
+			  <td align="center">-</td>
+			  <td align="center">-</td>
+			  <td align="center"></td>
+			  <td align="center"></td>
+			  </tr>
+			  <tr>
+			  <td align="center">网费</td>
+			  <td align="center">2018-08-01</td>
+			  <td align="center">2018-08-31</td>
+			  <td align="center">-</td>
+			  <td align="center">-</td>
+			  <td align="center">-</td>
+			  <td align="center"></td>
+			  <td align="center"></td>
+			  </tr>
+			  <tr>
+			  <td align="center">热水器</td>
+			  <td align="center">2018-08-01</td>
+			  <td align="center">2018-08-31</td>
+			  <td align="center">-</td>
+			  <td align="center">-</td>
+			  <td align="center">-</td>
+			  <td align="center"></td>
+			  <td align="center"></td>
+			  </tr>
+			   <tr>
+			  <td align="center">其他</td>
+			  <td align="center">2018-08-01</td>
+			  <td align="center">2018-08-31</td>
+			  <td align="center" colspan="3"></td>
+			  <td align="center"></td>
+			  <td align="center"></td>
+			  </tr>
+			  <tr>
+			  
+			   <td colspan="1" align="center" >应收合计</td>
+			  <td colspan="7" align="center" >205.00（贰佰零伍元整）</td>
+			  </tr>
+			  <tr>
+			  <td colspan="1" align="center" >备注</td>
+			  <td colspan="7" align="center"></td>
+			  </tr>
+			  <tr>
+			  <td align="left" colspan="2" id="topborder2">打印日期：2018-07-30</td>
+			  <td align="left" colspan="3" id="topborder2">经办人：</td>
+			  <td align="left" colspan="3" id="topborder2">付款人：</td>
+		  </tr>
+		  </table>
+	  </div>
+	</div>
+</div>
+
+
+</body>
+</html>

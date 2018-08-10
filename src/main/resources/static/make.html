@@ -1,0 +1,399 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <title>制单</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport' />
+    
+    <!--[if lt IE 9]>
+    <script src='assets/javascripts/html5shiv.js' type='text/javascript'></script>
+    <![endif]-->
+    <link href='assets/stylesheets/bootstrap/bootstrap.css' media='all' rel='stylesheet' type='text/css' />
+    <link href='assets/stylesheets/bootstrap/bootstrap-responsive.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / jquery ui -->
+    <link href='assets/stylesheets/jquery_ui/jquery-ui-1.10.0.custom.css' media='all' rel='stylesheet' type='text/css' />
+    <link href='assets/stylesheets/jquery_ui/jquery.ui.1.10.0.ie.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / switch buttons -->
+    <link href='assets/stylesheets/plugins/bootstrap_switch/bootstrap-switch.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / xeditable -->
+    <link href='assets/stylesheets/plugins/xeditable/bootstrap-editable.css' media='all' rel='stylesheet' type='text/css' />
+    <link href='assets/stylesheets/plugins/common/bootstrap-wysihtml5.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / wysihtml5 (wysywig) -->
+    <link href='assets/stylesheets/plugins/common/bootstrap-wysihtml5.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / jquery file upload -->
+    <link href='assets/stylesheets/plugins/jquery_fileupload/jquery.fileupload-ui.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / full calendar -->
+    <link href='assets/stylesheets/plugins/fullcalendar/fullcalendar.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / select2 -->
+    <link href='assets/stylesheets/plugins/select2/select2.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / mention -->
+    <link href='assets/stylesheets/plugins/mention/mention.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / tabdrop (responsive tabs) -->
+    <link href='assets/stylesheets/plugins/tabdrop/tabdrop.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / jgrowl notifications -->
+    <link href='assets/stylesheets/plugins/jgrowl/jquery.jgrowl.min.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / datatables -->
+    <link href='assets/stylesheets/plugins/datatables/bootstrap-datatable.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / dynatrees (file trees) -->
+    <link href='assets/stylesheets/plugins/dynatree/ui.dynatree.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / color picker -->
+    <link href='assets/stylesheets/plugins/bootstrap_colorpicker/bootstrap-colorpicker.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / datetime picker -->
+    <link href='assets/stylesheets/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / daterange picker) -->
+    <link href='assets/stylesheets/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / flags (country flags) -->
+    <link href='assets/stylesheets/plugins/flags/flags.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / slider nav (address book) -->
+    <link href='assets/stylesheets/plugins/slider_nav/slidernav.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / fuelux (wizard) -->
+    <link href='assets/stylesheets/plugins/fuelux/wizard.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- / flatty theme -->
+    <link href='assets/stylesheets/light-theme.css' id='color-settings-body-color' media='all' rel='stylesheet' type='text/css' />
+    <!-- / demo -->
+    <link href='assets/stylesheets/demo.css' media='all' rel='stylesheet' type='text/css' />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+<body class='contrast-red '>
+<header>
+   
+</header>
+<div id='wrapper'>
+<div id='main-nav-bg'></div>
+<nav class='' id='main-nav'>
+<div class='navigation'>
+<div class='search'>
+    <form accept-charset="UTF-8" action="search_results.html" method="get" /><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+        <div class='search-wrapper'>
+            <input autocomplete="off" class="search-query" id="q" name="q" placeholder="Search..." type="text" value="" />
+            <button class="btn btn-link icon-search" name="button" type="submit"></button>
+        </div>
+    </form>
+</div>
+<ul class='nav nav-stacked'>
+
+
+<li class=''>
+    <a href='index.html'>
+        <i class='icon-table'></i>
+        <span>房间列表</span>
+    </a>
+</li>
+<li class='active'>
+    <a href='#'>
+        <i class='icon-th'></i>
+        <span>制单</span>
+    </a>
+</li>
+
+
+</ul>
+</div>
+</nav>
+<section id='content'>
+<div class='container-fluid'>
+<div class='row-fluid' id='content-wrapper'>
+<div class='span12'>
+
+<div class='row-fluid' id="tablecon">
+    
+</div>
+<hr class='hr-double' />
+
+</div>
+</div>
+</div>
+
+
+
+
+<!-- / jquery -->
+<script src='assets/javascripts/jquery/jquery.min.js' type='text/javascript'></script>
+<!-- / jquery mobile events (for touch and slide) -->
+<script src='assets/javascripts/plugins/mobile_events/jquery.mobile-events.min.js' type='text/javascript'></script>
+<!-- / jquery migrate (for compatibility with new jquery) -->
+<script src='assets/javascripts/jquery/jquery-migrate.min.js' type='text/javascript'></script>
+<!-- / jquery ui -->
+<script src='assets/javascripts/jquery_ui/jquery-ui.min.js' type='text/javascript'></script>
+<!-- / bootstrap -->
+<script src='assets/javascripts/bootstrap/bootstrap.min.js' type='text/javascript'></script>
+<script src='assets/javascripts/plugins/flot/excanvas.js' type='text/javascript'></script>
+<!-- / sparklines -->
+<script src='assets/javascripts/plugins/sparklines/jquery.sparkline.min.js' type='text/javascript'></script>
+<!-- / flot charts -->
+<script src='assets/javascripts/plugins/flot/flot.min.js' type='text/javascript'></script>
+<script src='assets/javascripts/plugins/flot/flot.resize.js' type='text/javascript'></script>
+<script src='assets/javascripts/plugins/flot/flot.pie.js' type='text/javascript'></script>
+<!-- / bootstrap switch -->
+<script src='assets/javascripts/plugins/bootstrap_switch/bootstrapSwitch.min.js' type='text/javascript'></script>
+<!-- / fullcalendar -->
+<script src='assets/javascripts/plugins/fullcalendar/fullcalendar.min.js' type='text/javascript'></script>
+<!-- / datatables -->
+<script src='assets/javascripts/plugins/datatables/jquery.dataTables.min.js' type='text/javascript'></script>
+<script src='assets/javascripts/plugins/datatables/jquery.dataTables.columnFilter.js' type='text/javascript'></script>
+<!-- / wysihtml5 -->
+<script src='assets/javascripts/plugins/common/wysihtml5.min.js' type='text/javascript'></script>
+<script src='assets/javascripts/plugins/common/bootstrap-wysihtml5.js' type='text/javascript'></script>
+<!-- / select2 -->
+<script src='assets/javascripts/plugins/select2/select2.js' type='text/javascript'></script>
+<!-- / color picker -->
+<script src='assets/javascripts/plugins/bootstrap_colorpicker/bootstrap-colorpicker.min.js' type='text/javascript'></script>
+<!-- / mention -->
+<script src='assets/javascripts/plugins/mention/mention.min.js' type='text/javascript'></script>
+<!-- / input mask -->
+<script src='assets/javascripts/plugins/input_mask/bootstrap-inputmask.min.js' type='text/javascript'></script>
+<!-- / fileinput -->
+<script src='assets/javascripts/plugins/fileinput/bootstrap-fileinput.js' type='text/javascript'></script>
+<!-- / modernizr -->
+<script src='assets/javascripts/plugins/modernizr/modernizr.min.js' type='text/javascript'></script>
+<!-- / retina -->
+<script src='assets/javascripts/plugins/retina/retina.js' type='text/javascript'></script>
+<!-- / fileupload -->
+<script src='assets/javascripts/plugins/fileupload/tmpl.min.js' type='text/javascript'></script>
+<script src='assets/javascripts/plugins/fileupload/load-image.min.js' type='text/javascript'></script>
+<script src='assets/javascripts/plugins/fileupload/canvas-to-blob.min.js' type='text/javascript'></script>
+<script src='assets/javascripts/plugins/fileupload/jquery.iframe-transport.min.js' type='text/javascript'></script>
+<script src='assets/javascripts/plugins/fileupload/jquery.fileupload.min.js' type='text/javascript'></script>
+<script src='assets/javascripts/plugins/fileupload/jquery.fileupload-fp.min.js' type='text/javascript'></script>
+<script src='assets/javascripts/plugins/fileupload/jquery.fileupload-ui.min.js' type='text/javascript'></script>
+<script src='assets/javascripts/plugins/fileupload/jquery.fileupload-init.js' type='text/javascript'></script>
+<!-- / timeago -->
+<script src='assets/javascripts/plugins/timeago/jquery.timeago.js' type='text/javascript'></script>
+<!-- / slimscroll -->
+<script src='assets/javascripts/plugins/slimscroll/jquery.slimscroll.min.js' type='text/javascript'></script>
+<!-- / autosize (for textareas) -->
+<script src='assets/javascripts/plugins/autosize/jquery.autosize-min.js' type='text/javascript'></script>
+<!-- / charCount -->
+<script src='assets/javascripts/plugins/charCount/charCount.js' type='text/javascript'></script>
+<!-- / validate -->
+<script src='assets/javascripts/plugins/validate/jquery.validate.min.js' type='text/javascript'></script>
+<script src='assets/javascripts/plugins/validate/additional-methods.js' type='text/javascript'></script>
+<!-- / naked password -->
+<script src='assets/javascripts/plugins/naked_password/naked_password-0.2.4.min.js' type='text/javascript'></script>
+<!-- / nestable -->
+<script src='assets/javascripts/plugins/nestable/jquery.nestable.js' type='text/javascript'></script>
+<!-- / tabdrop -->
+<script src='assets/javascripts/plugins/tabdrop/bootstrap-tabdrop.js' type='text/javascript'></script>
+<!-- / jgrowl -->
+<script src='assets/javascripts/plugins/jgrowl/jquery.jgrowl.min.js' type='text/javascript'></script>
+<!-- / bootbox -->
+<script src='assets/javascripts/plugins/bootbox/bootbox.min.js' type='text/javascript'></script>
+<!-- / inplace editing -->
+<script src='assets/javascripts/plugins/xeditable/bootstrap-editable.min.js' type='text/javascript'></script>
+<script src='assets/javascripts/plugins/xeditable/wysihtml5.js' type='text/javascript'></script>
+<!-- / ckeditor -->
+<script src='assets/javascripts/plugins/ckeditor/ckeditor.js' type='text/javascript'></script>
+<!-- / filetrees -->
+<script src='assets/javascripts/plugins/dynatree/jquery.dynatree.min.js' type='text/javascript'></script>
+<!-- / datetime picker -->
+<script src='assets/javascripts/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.js' type='text/javascript'></script>
+<!-- / daterange picker -->
+<script src='assets/javascripts/plugins/bootstrap_daterangepicker/moment.min.js' type='text/javascript'></script>
+<script src='assets/javascripts/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.js' type='text/javascript'></script>
+<!-- / max length -->
+<script src='assets/javascripts/plugins/bootstrap_maxlength/bootstrap-maxlength.min.js' type='text/javascript'></script>
+<!-- / dropdown hover -->
+<script src='assets/javascripts/plugins/bootstrap_hover_dropdown/twitter-bootstrap-hover-dropdown.min.js' type='text/javascript'></script>
+<!-- / slider nav (address book) -->
+<script src='assets/javascripts/plugins/slider_nav/slidernav-min.js' type='text/javascript'></script>
+<!-- / fuelux -->
+<script src='assets/javascripts/plugins/fuelux/wizard.js' type='text/javascript'></script>
+<!-- / flatty theme -->
+<script src='assets/javascripts/nav.js' type='text/javascript'></script>
+<script src='assets/javascripts/tables.js' type='text/javascript'></script>
+<script src='assets/javascripts/theme.js' type='text/javascript'></script>
+<!-- / demo -->
+<script src='assets/javascripts/demo/jquery.mockjax.js' type='text/javascript'></script>
+<script src='assets/javascripts/demo/inplace_editing.js' type='text/javascript'></script>
+<script src='assets/javascripts/demo/charts.js' type='text/javascript'></script>
+<script src='assets/javascripts/demo/demo.js' type='text/javascript'></script>
+
+</body>
+</html>
+
+<script language="javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script language="javascript" src="js/jquery.jqprint-0.3.js"></script>
+	<script src="js/jquery-migrate-1.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+	<script language="javascript">
+	function  addmake(id){
+		//alert(id);
+		var infos = new Object(); 
+		infos.roomid = id;
+		infos.r_bdate = $("#rbdate").val();
+		infos.r_edate = $("#redate").val();
+		infos.r_price = $("#rprice").val();
+		
+		infos.w_bdate = $("#wbdate").val();
+		infos.w_edate = $("#wedate").val();
+		infos.w_bqty = $("#wbqty").val();
+		infos.w_eqty = $("#weqty").val();
+		infos.w_price = $("#wprice").val();
+		
+		infos.e_bdate = $("#ebdate").val();
+		infos.e_edate = $("#eedate").val();
+		infos.e_bqty = $("#ebqty").val();
+		infos.e_eqty = $("#eeqty").val();
+		infos.e_price = $("#eprice").val();
+		
+		infos.s_bdate = $("#sbdate").val();
+		infos.s_edate = $("#sedate").val();
+	    infos.s_price = $("#sprice").val();
+		
+		//alert(JSON.stringify(infos));
+		
+		$.ajax({
+               type: "POST",
+               url: "http://192.168.200.89:8080/bill/addbill",
+			   dataType:"json",
+			   contentType: 'application/json',
+               data: JSON.stringify(infos),
+               success: function(data){
+				   alert("提交成功");
+				   window.history.go(-1);
+               },
+			   error:function(data){
+				   alert("提交失败");
+			   }
+            });
+		
+	}
+	$(document).ready(function (){
+		var roomid=UrlParm.parm("id");
+		$.ajax({
+               type: "POST",
+               url: "http://192.168.200.89:8080/bill/getlast",
+               data: "id="+roomid,
+               success: function(data){
+				    var tpl   =  $("#myTemplate").html();
+					var template = Handlebars.compile(tpl);
+					var html = template(data);
+					$('#tablecon').append(html);
+
+               },
+			   error:function(data){
+				alert("网络问题");
+			   }
+            });
+	})
+    </script>
+<script language="javascript">
+UrlParm = function() { // url参数
+ var data, index;
+ (function init() {
+  data = [];
+  index = {};
+  var u = window.location.search.substr(1);
+  if (u != '') {
+   var parms = decodeURIComponent(u).split('&');
+   for (var i = 0, len = parms.length; i < len; i++) {
+    if (parms[i] != '') {
+     var p = parms[i].split("=");
+     if (p.length == 1 || (p.length == 2 && p[1] == '')) {// p | p=
+      data.push(['']);
+      index[p[0]] = data.length - 1;
+     } else if (typeof(p[0]) == 'undefined' || p[0] == '') { // =c | =
+      data[0] = [p[1]];
+     } else if (typeof(index[p[0]]) == 'undefined') { // c=aaa
+      data.push([p[1]]);
+      index[p[0]] = data.length - 1;
+     } else {// c=aaa
+      data[index[p[0]]].push(p[1]);
+     }
+    }
+   }
+  }
+ })();
+ return {
+  // 获得参数,类似request.getParameter()
+  parm : function(o) { // o: 参数名或者参数次序
+   try {
+    return (typeof(o) == 'number' ? data[o][0] : data[index[o]][0]);
+   } catch (e) {
+   }
+  },
+  //获得参数组, 类似request.getParameterValues()
+  parmValues : function(o) { // o: 参数名或者参数次序
+   try {
+    return (typeof(o) == 'number' ? data[o] : data[index[o]]);
+   } catch (e) {}
+  },
+  //是否含有parmName参数
+  hasParm : function(parmName) {
+   return typeof(parmName) == 'string' ? typeof(index[parmName]) != 'undefined' : false;
+  },
+  // 获得参数Map ,类似request.getParameterMap()
+  parmMap : function() {
+   var map = {};
+   try {
+    for (var p in index) { map[p] = data[index[p]]; }
+   } catch (e) {}
+   return map;
+  }
+ }
+}();
+</script>
+
+<script type="text/template" id="myTemplate">
+	<div class='span12 box bordered-box blue-border' style='margin-bottom:0;'>
+        <div class='box-header blue-background'>
+            <div class='title'>制作单据</div>
+            <div class='actions'>
+				<button class='btn' style='margin-bottom:5px' onclick='addmake({{room_id}})' >
+					<i class='icon-check'></i>
+					提交
+                </button>
+            </div>
+        </div>
+        <div class='box-content box-no-padding'>
+            <div class='responsive-table'>
+                <div class='scrollable-area'>
+                    <table width="100%" border="1" style="BORDER-COLLAPSE: collapse ;" bordercolorlight="#000000" bordercolordark="#000000" id="noborder">
+					   <tr >
+						  <td align="center" colspan="8" style="font-size:18px;" id="topborder" ><strong>{{room_name}} 收款收据单</strong></td>
+					   </tr>
+					  <tr>
+						  <td align="center" width="80">费用项目</td>
+						  <td align="center" width="140">开始时间</td>
+						  <td align="center" width="140">结束时间</td>
+						  <td align="center" width="45">起数</td>
+						  <td align="center" width="45">止数</td>
+						  <td align="center" width="70">单价</td>
+						  </tr>
+						  <tr>
+						  <td align="center">租金</td>
+						  <td align="center"><input type="date" id="rbdate"/></td>
+						  <td align="center"><input type="date" id="redate"/></td>
+						  <td align="center">-</td>
+						  <td align="center">-</td>
+						  <td align="right"><input id="rprice" type="text" value="{{rprice}}"/></td>
+						  </tr>
+						  <tr>
+						  <td align="center">电费</td>
+						  <td align="center"><input type="date" id="ebdate"/></td>
+						  <td align="center"><input type="date" id="eedate"/></td>
+						  <td align="right"><input id="ebqty" type="text" value="{{wqty}}"/></td>
+						  <td align="right"><input id="eeqty" type="text" placeholder="请输入"/></td>
+						  <td align="right"><input id="eprice" type="text" value="{{eprice}}"/></td>
+						  </tr>
+						  <tr>
+						  <td align="center">水费</td>
+						  <td align="center"><input type="date" id="wbdate"/></td>
+						  <td align="center"><input type="date" id="wedate"/></td>
+						  <td align="right"><input id="wbqty" type="text" value="{{eqty}}"/></td>
+						  <td align="right"><input id="weqty" type="text" placeholder="请输入"/></td>
+						  <td align="right"><input id="wprice" type="text" value="{{wprice}}"/></td>
+						  </tr>
+						  <tr>
+						  <td align="center">公用电</td>
+						  <td align="center"><input type="date" id="sbdate"/></td>
+						  <td align="center"><input type="date" id="wedate"/></td>
+						  <td align="center">-</td>
+						  <td align="center">-</td>
+						  <td align="right"><input id="sprice" type="text" value="{{sprice}}"/></td>
+						  </tr>
+				  </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
